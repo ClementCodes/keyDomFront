@@ -1,0 +1,11 @@
+<div><h1>je suis le home editor</h1></div>
+
+<li>
+  <span>{{ place | json }}</span>
+</li>
+<h1></h1>
+
+<h1>test</h1>
+<h1 *ngFor="let item of place | keyvalue">
+  <span>{{ item.value }}</span>
+</h1>
