@@ -7,5 +7,5 @@
 
 <h1>test</h1>
 <h1 *ngFor="let item of place | keyvalue">
-  <span>{{ item.value }}</span>
+  <span>{{ item.value | json }}</span>
 </h1>

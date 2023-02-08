@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeEditorComponent } from '../../../form/home-editor/home-editor.component';
 import { HomeComponent } from '../home.component';
+import { HouseService } from 'src/app/services/house/house.service';
+
 
 const routes: Routes = [
   { path: "", component: HomeComponent }
@@ -10,6 +12,12 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [
+
+    HouseService,
+
+
+  ]
 })
 export class HomeFormRoutingModule { }

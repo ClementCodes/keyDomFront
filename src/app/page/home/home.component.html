@@ -5,8 +5,37 @@
   inscritpion en fron tiun de si lon est connecteé ou pas
 </h3>
 
-<label for="name">Name: </label>
-<input id="name" type="text" [formControl]="name" />
-<p>Value: {{ name.value }}</p>
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="piece">nombre de piece: </label>
+    <input id="piece" type="number" formControlName="pieces" />
+  </div>
+  <div>
+    <label for="bathroom">sdb: </label>
+    <input id="bathroom" type="number" formControlName="bathroom" />
+  </div>
+  <div>
+    <label for="livingRoom">salon: </label>
+    <input id="livingRoom" type="number" formControlName="livingRoom" />
+  </div>
+  <div>
+    <label for="wc">wc: </label>
+    <input id="wc" type="number" formControlName="wc" />
+  </div>
+  <div>
+    <label for="rooms">chambres: </label>
+    <input id="rooms" type="number" formControlName="rooms" />
+  </div>
+  <div>
+    <label for="idProfil">idprofil: </label>
+    <input id="idProfil" type="number" formControlName="idProfil" />
+  </div>
 
-<h1>{{ titre }}</h1>
+  <button>ciiii</button>
+</form>
+
+<h2>result input {{ profileForm.value.wc }}</h2>
+
+<h1>app hompe editor</h1>
+
+<app-home-editor></app-home-editor>

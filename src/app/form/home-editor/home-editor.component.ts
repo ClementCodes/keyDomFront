@@ -21,9 +21,7 @@ export class HomeEditorComponent {
   @Input() placeInput!: Place;
   place!: Place[];
 
-
-
-  constructor(private fb: FormBuilder, private houseService: HouseService,
+  constructor(private houseService: HouseService,
   ) { }
 
 
@@ -34,14 +32,10 @@ export class HomeEditorComponent {
 
   showHomeEditor() {
 
-
     return this.houseService.getConfig()
       .subscribe((data: any[]) => {
         this.place = data
       }
-
-
-
       );
 
   }

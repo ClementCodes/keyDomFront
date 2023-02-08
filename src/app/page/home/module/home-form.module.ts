@@ -9,16 +9,19 @@ import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from '../home.component';
 import { HomeEditorComponent } from '../../../form/home-editor/home-editor.component';
 
+
 @NgModule({
   declarations: [
     HomeComponent,
-    HomeEditorComponent
+    HomeEditorComponent,
+
   ],
   imports: [
     CommonModule,
     HomeFormRoutingModule,
     ReactiveFormsModule,
     FormsModule,
+    HttpClientModule,
 
 
   ],

@@ -1,5 +1,12 @@
-import { Component } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Component, Input } from '@angular/core';
+import { FormControl, FormControlName, FormGroup, NgForm } from '@angular/forms';
+import { Observable, of, tap } from 'rxjs';
+import { Place } from 'src/app/models/place/pLace.model';
+
+import { HouseService } from 'src/app/services/house/house.service';
+
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -8,26 +15,40 @@ import { FormControl } from '@angular/forms';
 export class HomeComponent {
 
 
-  constructor() { }
-  titre = "salut"
-  name = new FormControl('');
-  name2 = new FormControl('hello')
+  constructor(private service: HouseService,) { }
+
+
+  profile!: Place
+
+
+  profileForm: any = new FormGroup({
+    pieces: new FormControl(''),
+    bathroom: new FormControl(''),
+    livingRoom: new FormControl(''),
+    wc: new FormControl(''),
+    rooms: new FormControl(''),
+    idProfil: new FormControl(''),
+  });
+
+
   ngOnInit(): void {
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
-    this.testClem();
+
   }
 
 
+  onSubmit() {
 
-  testClem(): any {
 
-    if (this.name == this.name2) {
+    console.log(this.profileForm.value)
+    return of(this.service.postConfig(this.profileForm.value).subscribe(
 
-      return this.titre = "mauvais titre"
-    };
+      {
+        next: (v) => console.log(v),
+        error: (e) => console.error(e),
+        complete: () => console.info('complete')
+      }
+
+
+    ))
   }
-
-
-
 }

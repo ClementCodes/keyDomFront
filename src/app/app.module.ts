@@ -9,6 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { AtMyhouseComponent } from './page/at-myhouse/at-myhouse.component';
 import { NavBarComponent } from './shared/components/nav-bar/nav-bar.component';
+import { Place } from './models/place/pLace.model';
 
 
 
@@ -22,6 +23,7 @@ import { NavBarComponent } from './shared/components/nav-bar/nav-bar.component';
     AppComponent,
     NavBarComponent,
     AtMyhouseComponent,
+
 
 
 
