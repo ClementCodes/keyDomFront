@@ -6,10 +6,6 @@ import { catchError, retry } from 'rxjs/operators';
 import { HomeEditorComponent } from 'src/app/form/home-editor/home-editor.component';
 import { Place } from 'src/app/models/place/pLace.model';
 
-
-
-
-
 @Injectable({
 
   providedIn: "root"
@@ -18,15 +14,15 @@ export class HouseService {
 
 
   //mes urls
-  apiGetUrl: string = 'http://localhost:8000/api/home';
-  apiPostUrl: string = 'http://localhost:8000/api/home/post';
+  apiGetUrl: string = 'http://localhost:8000/api/lifeplace';
+  apiPostUrl: string = 'http://localhost:8000/api/lifeplace/post';
 
 
 
   constructor(private http: HttpClient) { }
 
   httpHeader = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' })
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' }), withCredentials: true
   };
 
   body!: Place
@@ -34,7 +30,7 @@ export class HouseService {
 
 
   getConfig(): Observable<any> {
-    return this.http.get<Place[]>(this.apiGetUrl)
+    return this.http.get<Place[]>(this.apiGetUrl, this.httpHeader)
   }
 
   postConfig(place: Place): Observable<Place> {

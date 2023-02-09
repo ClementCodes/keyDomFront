@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Input } from '@angular/core';
-import { FormControl, FormControlName, FormGroup, NgForm } from '@angular/forms';
+import { FormControl, FormControlName, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Observable, of, tap } from 'rxjs';
 import { Place } from 'src/app/models/place/pLace.model';
 
@@ -22,7 +22,8 @@ export class HomeComponent {
 
 
   profileForm: any = new FormGroup({
-    pieces: new FormControl(''),
+    pieces: new FormControl(Validators.required,
+      Validators.minLength(4)),
     bathroom: new FormControl(''),
     livingRoom: new FormControl(''),
     wc: new FormControl(''),
