@@ -13,12 +13,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class AtMyhouseComponent {
   myForm: FormGroup;
-
   validationCode: string | undefined;
-
   constructor(private service: ProfilService, private fb: FormBuilder, private router: Router) {
-
-
 
     this.myForm = this.fb.group({
       name: ['', [Validators.required, Validators.min(1)]],
@@ -32,8 +28,6 @@ export class AtMyhouseComponent {
 
   }
 
-
-
   // profileForm: any = new FormGroup({
   //   name: new FormControl('', Validators.required),
   //   firstName: new FormControl(''),
@@ -46,13 +40,7 @@ export class AtMyhouseComponent {
 
 
 
-
-
   ngOnInit(): void {
-
-
-
-
 
 
   }
@@ -60,15 +48,16 @@ export class AtMyhouseComponent {
 
 
   onSubmit(route: string) {
-    this.router.navigate([route])
+
     // this.myForm.valid =enableDebugTools;
 
     let salt = bcrypt.genSaltSync(10);
     let pass = bcrypt.hashSync(this.myForm.value.password, salt);
 
 
-
-
+    this.myForm.value.password = pass
+    console.log(pass)
+    // this.router.navigate([route])
     return of(this.service.postConfig(this.myForm.value).subscribe(
 
       {
