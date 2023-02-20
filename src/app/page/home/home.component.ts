@@ -6,6 +6,7 @@ import { Place } from 'src/app/models/place/pLace.model';
 
 import { HouseService } from 'src/app/services/house/house.service';
 
+import * as bcrypt from 'bcrypt';
 
 @Component({
   selector: 'app-home',
@@ -18,17 +19,17 @@ export class HomeComponent {
   constructor(private service: HouseService,) { }
 
 
-  profile!: Place
 
 
-  profileForm: any = new FormGroup({
-    pieces: new FormControl(Validators.required,
-      Validators.minLength(4)),
+
+  houseForm: any = new FormGroup({
+    pieces: new FormControl(''),
     bathroom: new FormControl(''),
     livingRoom: new FormControl(''),
     wc: new FormControl(''),
     rooms: new FormControl(''),
     idProfil: new FormControl(''),
+
   });
 
 
@@ -37,11 +38,13 @@ export class HomeComponent {
   }
 
 
+
+
   onSubmit() {
 
 
-    console.log(this.profileForm.value)
-    return of(this.service.postConfig(this.profileForm.value).subscribe(
+    console.log(this.houseForm.value)
+    return of(this.service.postConfig(this.houseForm.value).subscribe(
 
       {
         next: (v) => console.log(v),

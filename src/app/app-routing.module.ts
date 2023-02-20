@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeFormModule } from './page/home/module/home-form.module';
+
 
 
 
 
 const routes: Routes = [{
-  path: 'home', loadChildren: () => import("./page/home/module/home-form.module").then(m => m.HomeFormModule)
+  path: 'home', loadChildren: () => import("./page/home/home-form.module").then(m => m.HomeFormModule)
 },
-// {
-//   path: '', component: AppComponent
-// },
 {
-  path: '**', redirectTo: 'home'
+  path: 'login', loadChildren: () => import("./page/login/login.module").then(m => m.LoginModule)
+},
+{
+  path: '**', redirectTo: 'login'
 }
 
 

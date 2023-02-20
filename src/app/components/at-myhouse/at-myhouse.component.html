@@ -1,0 +1,95 @@
+<p>paghe de connexion</p>
+<p>
+  faire une condition que si je suis connécte ok sinon renvoye sur la partie
+  inscritpion
+</p>
+
+<div class="connection">
+  <h2>partie de connexion</h2>
+  <form [formGroup]="myForm" (ngSubmit)="onSubmit('/home')">
+    <div class="mb-3">
+      <label for="name" class="form-label">nom: </label>
+      <input
+        required
+        id="name"
+        type="text"
+        class="form-control ng-untouched ng-pristine ng-valid"
+        formControlName="name"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="firstName" class="form-label">prenom: </label>
+      <input
+        required
+        id="firstName"
+        type="text"
+        class="form-control ng-untouched ng-pristine ng-valid"
+        formControlName="firstName"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">email: </label>
+      <input
+        required
+        id="email"
+        type="text"
+        class="form-control ng-untouched ng-pristine ng-valid"
+        aria-describedby="emailHelp"
+        formControlName="email"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="password" class="form-label">password: </label>
+      <input
+        required
+        id="password"
+        type="password"
+        class="form-control ng-untouched ng-pristine ng-valid"
+        aria-describedby="emailHelp"
+        formControlName="password"
+      />
+    </div>
+
+    <!-- <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Mot de passe</label>
+      <input type="password" class="form-control" id="exampleInputPassword1" />
+    </div> -->
+    <div class="mb-3">
+      <label for="street" class="form-label">rue: </label>
+      <input
+        required
+        id="street"
+        type="string"
+        class="form-control ng-untouched ng-pristine ng-valid"
+        formControlName="street"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="zipCode" class="form-label">code postal: </label>
+      <input
+        required
+        id="zipCode"
+        type="number"
+        class="form-control ng-untouched ng-pristine ng-valid"
+        formControlName="zipCode"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="phone" class="form-label">téléphone: </label>
+      <input
+        required
+        id="phone"
+        type="number"
+        class="form-control ng-untouched ng-pristine ng-valid"
+        formControlName="phone"
+      />
+    </div>
+
+    <button class="btn btn-primary" [disabled]="!myForm.valid">
+      Inscription
+    </button>
+  </form>
+</div>

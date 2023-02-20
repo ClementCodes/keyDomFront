@@ -6,14 +6,18 @@ HomeComponent
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { HttpClientModule } from '@angular/common/http';
-import { HomeComponent } from '../home.component';
-import { HomeEditorComponent } from '../../../form/home-editor/home-editor.component';
+import { HomeComponent } from './home.component';
+import { HomeEditorComponent } from '../../form/home-editor/home-editor.component';
+
+
 
 
 @NgModule({
   declarations: [
     HomeComponent,
     HomeEditorComponent,
+
+
 
   ],
   imports: [

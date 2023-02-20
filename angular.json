@@ -17,6 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+          
             "outputPath": "dist/key-dom",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -104,4 +105,5 @@
   "cli": {
     "analytics": false
   }
+  
 }
