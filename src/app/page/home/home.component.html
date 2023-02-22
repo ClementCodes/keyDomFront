@@ -1,39 +1,62 @@
-<p>home works!</p>
-
 <h3>
   Donc sur cette page home je vais mettre un syteùe de connection ou d
-  inscritpion en fron tiun de si lon est connecteé ou pas
+  inscritpion en fron tiun de si lon est connecteé ou pas Page home
 </h3>
-
-<form [formGroup]="houseForm" (ngSubmit)="onSubmit()">
-  <div>
-    <label for="piece">nombre de piece: </label>
-    <input id="piece" type="number" formControlName="pieces" />
-  </div>
-  <div>
-    <label for="bathroom">sdb: </label>
-    <input id="bathroom" type="number" formControlName="bathroom" />
-  </div>
-  <div>
-    <label for="livingRoom">salon: </label>
-    <input id="livingRoom" type="number" formControlName="livingRoom" />
-  </div>
-  <div>
-    <label for="wc">wc: </label>
-    <input id="wc" type="number" formControlName="wc" />
-  </div>
-  <div>
-    <label for="rooms">chambres: </label>
-    <input id="rooms" type="number" formControlName="rooms" />
-  </div>
-  <div>
-    <label for="idProfil">idprofil: </label>
-    <input id="idProfil" type="number" formControlName="idProfil" />
-  </div>
-
-  <button>ciiii</button>
-</form>
-
+<div class="home">
+  <h2>Parite enregistrement de la piece</h2>
+  <form [formGroup]="houseForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="piece" class="form-label">nombre de piece: </label>
+      <input
+        required
+        id="piece"
+        type="number"
+        class="form-control ng-untouched ng-pristine ng-valid"
+        formControlName="pieces"
+      />
+    </div>
+    <div>
+      <label for="bathroom" class="form-label">sdb: </label>
+      <input
+        required
+        id="bathroom"
+        type="number"
+        class="form-control ng-untouched ng-pristine ng-valid"
+        formControlName="bathroom"
+      />
+    </div>
+    <div>
+      <label for="livingRoom" class="form-label">salon: </label>
+      <input
+        required
+        id="livingRoom"
+        type="number"
+        class="form-control ng-untouched ng-pristine ng-valid"
+        formControlName="livingRoom"
+      />
+    </div>
+    <div>
+      <label for="wc" class="form-label">wc: </label>
+      <input
+        required
+        id="wc"
+        type="number"
+        class="form-control ng-untouched ng-pristine ng-valid"
+        formControlName="wc"
+      />
+    </div>
+    <div>
+      <label for="rooms" class="form-label">chambres: </label>
+      <input
+        required
+        id="rooms"
+        type="number"
+        class="form-control ng-untouched ng-pristine ng-valid"
+        formControlName="rooms"
+      />
+    </div>
+    <p></p>
+    <button class="btn btn-primary" [disabled]="!houseForm.valid">ciiii</button>
+  </form>
+</div>
 <h1>app hompe editor</h1>
-
-<app-home-editor></app-home-editor>

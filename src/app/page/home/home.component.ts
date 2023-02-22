@@ -23,12 +23,11 @@ export class HomeComponent {
 
 
   houseForm: any = new FormGroup({
-    pieces: new FormControl(''),
-    bathroom: new FormControl(''),
-    livingRoom: new FormControl(''),
-    wc: new FormControl(''),
-    rooms: new FormControl(''),
-    idProfil: new FormControl(''),
+    pieces: new FormControl('', [Validators.required, Validators.min(1)]),
+    bathroom: new FormControl('', [Validators.required, Validators.min(1)]),
+    livingRoom: new FormControl('', [Validators.required, Validators.min(1)]),
+    wc: new FormControl('', [Validators.required, Validators.min(1)]),
+    rooms: new FormControl('', [Validators.required, Validators.min(1)])
 
   });
 
@@ -43,7 +42,7 @@ export class HomeComponent {
   onSubmit() {
 
 
-    console.log(this.houseForm.value)
+    console.log(localStorage.getItem)
     return of(this.service.postConfig(this.houseForm.value).subscribe(
 
       {

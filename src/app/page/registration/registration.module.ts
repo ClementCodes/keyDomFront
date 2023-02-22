@@ -1,25 +1,31 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { LoginRoutingModule } from './login-routing.module';
+
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { LoginComponent } from './login.component';
+
+
+
+
+import { RegistrationComponent } from './registration.component';
+import { AtMyhouseComponent } from 'src/app/components/at-myhouse/at-myhouse.component';
+import { RegistrationRoutingModule } from './registration-routing.module';
+
 
 
 @NgModule({
   declarations: [
-    LoginComponent
+    AtMyhouseComponent,
+    RegistrationComponent
 
   ],
   imports: [
     CommonModule,
-    LoginRoutingModule,
-    CommonModule,
-    LoginRoutingModule,
+    RegistrationRoutingModule,
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule
   ]
 })
-export class LoginModule { }
+export class RegistrationModule { }

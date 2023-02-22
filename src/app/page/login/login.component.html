@@ -1,1 +1,44 @@
-<app-at-myhouse></app-at-myhouse>
+<h1>paze de connexion</h1>
+
+<div>
+  <h3>deja enregistre ?</h3>
+
+  <button class="btn btn-primary" routerLink="/connexion">connexion</button>
+</div>
+<div class="connexion">
+  <h2>partie de login</h2>
+  <form [formGroup]="myForm" (ngSubmit)="onSubmitLogin('/home')">
+    <div class="mb-3">
+      <label for="email" class="form-label">email: </label>
+      <input
+        required
+        id="email"
+        type="text"
+        class="form-control ng-untouched ng-pristine ng-valid"
+        aria-describedby="emailHelp"
+        formControlName="username"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="password" class="form-label">password: </label>
+      <input
+        required
+        id="password"
+        type="password"
+        class="form-control ng-untouched ng-pristine ng-valid"
+        aria-describedby="emailHelp"
+        formControlName="password"
+      />
+    </div>
+
+    <!-- <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Mot de passe</label>
+      <input type="password" class="form-control" id="exampleInputPassword1" />
+    </div> -->
+
+    <button class="btn btn-primary" [disabled]="!myForm.valid">
+      Inscription
+    </button>
+  </form>
+</div>

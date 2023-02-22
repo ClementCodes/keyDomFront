@@ -11,7 +11,7 @@ export class ProfilService {
 
   //mes urls
   apiGetUrl: string = 'http://localhost:8000/api/user';
-  apiPostUrl: string = 'http://localhost:8000/api/user/post';
+  apiPostUrl: string = 'http://localhost:8000/api/user/registration';
 
 
 
