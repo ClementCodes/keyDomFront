@@ -6,6 +6,8 @@ import { enableDebugTools } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { LoginService } from 'src/app/services/login/login.service';
+import { UserToken } from 'src/app/models/userToken/userToken.model';
+import { Login } from 'src/app/models/login/Login.model';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -15,6 +17,8 @@ export class LoginComponent {
 
   myForm: FormGroup;
   validationCode: string | undefined;
+
+  token!: string
   constructor(private service: LoginService, private fb: FormBuilder, private router: Router) {
 
     this.myForm = this.fb.group({
@@ -25,26 +29,23 @@ export class LoginComponent {
 
   }
 
-
-
-
-
   ngOnInit(): void {
 
 
   }
 
 
-
   onSubmitLogin(route: string) {
 
     // console.log(this.myForm.value)
 
+    sessionStorage.setItem("username", this.myForm.value.username)
+    sessionStorage.setItem("password", this.myForm.value.password)
 
     return of(this.service.postLogin(this.myForm.value).subscribe(
 
       {
-        next: (v) => this.router.navigate([route]),
+        next: ((v) => [this.router.navigate([route]), this.token = v, console.log(v), sessionStorage.setItem("token", this.token)]),
         error: (e) => console.error(e),
         complete: () => console.info('complete')
       }

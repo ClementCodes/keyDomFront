@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeEditorComponent } from '../../form/home-editor/home-editor.component';
-import { HomeComponent } from './home.component';
+import { HomeEditorComponent } from '../../../form/home-editor/home-editor.component';
+import { HomeComponent } from '../home.component';
 import { HouseService } from 'src/app/services/house/house.service';
 
 

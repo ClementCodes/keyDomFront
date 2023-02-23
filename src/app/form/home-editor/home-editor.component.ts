@@ -18,8 +18,10 @@ import { HouseService } from 'src/app/services/house/house.service';
 })
 export class HomeEditorComponent {
 
-  @Input() placeInput!: Place;
+  // @Input() placeInput!: Place;
   place!: Place[];
+
+  id!: number
 
   constructor(private houseService: HouseService,
   ) { }
@@ -28,13 +30,17 @@ export class HomeEditorComponent {
   ngOnInit(): void {
     this.showHomeEditor();
 
+
+
   }
 
   showHomeEditor() {
 
     return this.houseService.getConfig()
       .subscribe((data: any[]) => {
-        this.place = data
+        this.place = data[6]["userLink"][0]["id"]
+
+        this.id = data[6]["userLink"][0]["id"]
       }
       );
 

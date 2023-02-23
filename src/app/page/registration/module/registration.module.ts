@@ -8,7 +8,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 
 
-import { RegistrationComponent } from './registration.component';
+import { RegistrationComponent } from '../registration.component';
 import { AtMyhouseComponent } from 'src/app/components/at-myhouse/at-myhouse.component';
 import { RegistrationRoutingModule } from './registration-routing.module';
 

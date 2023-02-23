@@ -7,6 +7,8 @@ import { Place } from 'src/app/models/place/pLace.model';
 import { HouseService } from 'src/app/services/house/house.service';
 
 import * as bcrypt from 'bcrypt';
+import { UserToken } from 'src/app/models/userToken/userToken.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -16,10 +18,16 @@ import * as bcrypt from 'bcrypt';
 export class HomeComponent {
 
 
-  constructor(private service: HouseService,) { }
+  username = sessionStorage.getItem("username")
+  password = sessionStorage.getItem("password")
 
 
+  userToken!: UserToken
 
+  constructor(private service: HouseService, private router: Router) { }
+
+
+  token!: string | null
 
 
   houseForm: any = new FormGroup({
@@ -33,6 +41,14 @@ export class HomeComponent {
 
 
   ngOnInit(): void {
+    console.log("hello" + this.token?.valueOf)
+    let token2 = sessionStorage.getItem("token");
+
+    if (token2?.valueOf == undefined) {
+      this.router.navigate(["login"])
+    } else {
+      console.log("il ya  un token ")
+    }
 
   }
 
@@ -42,7 +58,13 @@ export class HomeComponent {
   onSubmit() {
 
 
-    console.log(localStorage.getItem)
+
+
+
+
+
+
+
     return of(this.service.postConfig(this.houseForm.value).subscribe(
 
       {
