@@ -44,11 +44,11 @@ export class RegistrationComponent {
 
 
 
-    let salt = bcrypt.genSaltSync(10);
-    let pass = bcrypt.hashSync(this.myForm.value.password, salt);
+    // let salt = bcrypt.genSaltSync(10);
+    // let pass = bcrypt.hashSync(this.myForm.value.password, salt);
 
 
-    this.myForm.value.password = pass
+    // this.myForm.value.password = pass
     // console.log(pass)
     this.router.navigate([route])
     return of(this.service.postConfig(this.myForm.value).subscribe(
