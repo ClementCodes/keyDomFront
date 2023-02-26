@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { RegistrationComponent } from '../registration.component';
-import { ProfilService } from 'src/app/services/profil/profil.service';
+import { UserService } from 'src/app/services/user/user.service';
+
 
 
 const routes: Routes = [{ path: "", component: RegistrationComponent }];
@@ -11,7 +12,7 @@ const routes: Routes = [{ path: "", component: RegistrationComponent }];
   exports: [RouterModule],
   providers: [
 
-    ProfilService,
+    UserService,
 
 
   ]

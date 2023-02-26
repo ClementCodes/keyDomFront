@@ -1,12 +1,13 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Profil } from 'src/app/models/profil/profil.model';
+import { User } from 'src/app/models/user/user.model';
+
 
 @Injectable({
   providedIn: 'root'
 })
-export class ProfilService {
+export class UserService {
 
 
   //mes urls
@@ -21,17 +22,25 @@ export class ProfilService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }), withCredentials: true
   };
 
-  profil!: Profil
+  user!: User
 
 
 
   getConfig(): Observable<any> {
-    return this.http.get<Profil[]>(this.apiGetUrl, this.httpHeader)
+    return this.http.get<User[]>(this.apiGetUrl, this.httpHeader)
   }
 
-  postConfig(profil: Profil): Observable<Profil> {
-    return this.http.post<Profil>(this.apiPostUrl, profil
+  postConfig(user: User): Observable<User> {
+    return this.http.post<User>(this.apiPostUrl, user
     )
+
+  }
+
+  putUser(user: User): Observable<User> {
+    return this.http.put<User>(this.apiPostUrl, user
+    )
+
+
 
   }
 }

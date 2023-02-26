@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { of } from 'rxjs';
-import { ProfilService } from 'src/app/services/profil/profil.service';
 import * as bcrypt from 'bcryptjs';
 import { enableDebugTools } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -19,7 +18,7 @@ export class LoginComponent {
   validationCode: string | undefined;
 
   token!: string
-  constructor(private service: LoginService, private fb: FormBuilder, private router: Router) {
+  constructor(private loginService: LoginService, private fb: FormBuilder, private router: Router) {
 
     this.myForm = this.fb.group({
       username: ['', [Validators.required, Validators.min(1)]],
@@ -42,7 +41,7 @@ export class LoginComponent {
     sessionStorage.setItem("username", this.myForm.value.username)
     sessionStorage.setItem("password", this.myForm.value.password)
 
-    return of(this.service.postLogin(this.myForm.value).subscribe(
+    return of(this.loginService.postLogin(this.myForm.value).subscribe(
 
       {
         next: ((v) => [this.router.navigate([route]), this.token = v, console.log(v), sessionStorage.setItem("token", this.token)]),

@@ -5,6 +5,9 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { HomeEditorComponent } from 'src/app/form/home-editor/home-editor.component';
 import { Place } from 'src/app/models/place/pLace.model';
+import { User } from 'src/app/models/user/user.model';
+
+
 
 @Injectable({
 
@@ -19,6 +22,14 @@ export class HouseService {
 
 
 
+  email = sessionStorage.getItem("username")
+  password = sessionStorage.getItem("password")
+
+
+  apiReceipeUrl: string = `http://localhost:8000/api/user/${this.email}/${this.password}`;
+
+
+  hello = console.log(this.apiReceipeUrl)
   constructor(private http: HttpClient) { }
 
   httpHeader = {
@@ -27,6 +38,11 @@ export class HouseService {
 
   body!: Place
 
+
+
+  getUser(): Observable<any> {
+    return this.http.get<User[]>(this.apiReceipeUrl, this.httpHeader)
+  }
 
 
   getConfig(): Observable<any> {

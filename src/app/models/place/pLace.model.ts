@@ -6,7 +6,8 @@ export interface Place {
     bathroom: number,
     livingRoom: number,
     wc: number,
-    rooms: number
+    rooms: number,
+    idProfil: number
 
 
 }

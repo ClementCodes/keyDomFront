@@ -10,6 +10,10 @@ import * as bcrypt from 'bcrypt';
 import { UserToken } from 'src/app/models/userToken/userToken.model';
 import { Router } from '@angular/router';
 
+import { UserService } from 'src/app/services/user/user.service';
+import { User } from 'src/app/models/user/user.model';
+
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -20,11 +24,11 @@ export class HomeComponent {
 
   username = sessionStorage.getItem("username")
   password = sessionStorage.getItem("password")
-
-
+  receipeId!: number;
+  user: User[] | any
   userToken!: UserToken
 
-  constructor(private service: HouseService, private router: Router) { }
+  constructor(private userService: UserService, private service: HouseService, private router: Router, private houseService: HouseService) { }
 
 
   token!: string | null
@@ -49,22 +53,28 @@ export class HomeComponent {
     } else {
       console.log("il ya  un token ")
     }
+    this.receipe()
+
 
   }
 
 
+  receipe() {
 
+
+
+    this.houseService.getUser().subscribe({
+      next: (v) => [console.log(v[0]), this.user = v[0], console.log(this.user.id)],
+      error: (e) => console.error(e),
+      complete: () => console.info('complete')
+    })
+
+
+
+  }
 
   onSubmit() {
-
-
-
-
-
-
-
-
-
+    this.postId()
     return of(this.service.postConfig(this.houseForm.value).subscribe(
 
       {
@@ -75,5 +85,16 @@ export class HomeComponent {
 
 
     ))
+  }
+
+
+  postId() {
+    of(this.userService.putUser(this.user.id).subscribe(
+
+      {
+        next: (v) => console.log(v),
+        error: (e) => console.error(e),
+        complete: () => console.info('complete')
+      }))
   }
 }
