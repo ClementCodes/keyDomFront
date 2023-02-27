@@ -15,6 +15,11 @@ export class UserService {
   apiPostUrl: string = 'http://localhost:8000/api/user/registration';
 
 
+  idUser = sessionStorage.getItem("idUser")
+  idPlace = sessionStorage.getItem("idPlace")
+
+  apiLifeInUserUrl: string = `http://localhost:8000/api/user/edit/${this.idUser}/${this.idPlace}`;
+
 
   constructor(private http: HttpClient) { }
 
@@ -36,11 +41,10 @@ export class UserService {
 
   }
 
-  putUser(user: User): Observable<User> {
-    return this.http.put<User>(this.apiPostUrl, user
+
+  insertUser(): Observable<any> {
+    return this.http.get<User[]>(this.apiLifeInUserUrl, this.httpHeader
     )
-
-
 
   }
 }

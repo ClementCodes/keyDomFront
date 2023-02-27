@@ -4,7 +4,7 @@
 </h3>
 <div class="home">
   <h2>Parite enregistrement de la piece</h2>
-  <form [formGroup]="houseForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="houseForm" (ngSubmit)="onSubmit('/home')">
     <div>
       <label for="piece" class="form-label">nombre de piece: </label>
       <input

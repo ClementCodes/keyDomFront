@@ -38,9 +38,9 @@ export class HomeEditorComponent {
 
     return this.houseService.getConfig()
       .subscribe((data: any[]) => {
-        this.place = data[6]["userLink"][0]["id"]
+        this.place = data[6]["userLink"][0]
 
-        this.id = data[6]["userLink"][0]["id"]
+        this.id = data[6]["userLink"][0]
       }
       );
 
