@@ -16,8 +16,8 @@ import { User } from 'src/app/models/user/user.model';
 
 @Component({
   selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  templateUrl: './registrationHome.component.html',
+  styleUrls: ['./registrationHome.component.scss']
 })
 export class HomeComponent {
 
@@ -44,23 +44,28 @@ export class HomeComponent {
 
   ngOnInit(): void {
 
-    let token2 = sessionStorage.getItem("token");
+    console.log("username", sessionStorage.getItem("username"))
+    console.log("password", sessionStorage.getItem("password"))
 
-    if (token2?.valueOf == undefined) {
+
+
+    let token = sessionStorage.getItem("token");
+
+    if (token?.valueOf == undefined) {
       this.router.navigate(["login"])
     } else {
       console.log("il ya  un token ")
     }
-    this.receipe()
-    this.insert()
+    this.receipe();
+
 
   }
 
-  //ili a l'initialisation je recupere le l 'id de l'utilisateur' qui vient de se loguuer
+  //ici a l'initialisation je recupere le l 'id de l'utilisateur' qui vient de se loguuer
   receipe() {
 
     this.houseService.getUser().subscribe({
-      next: (v) => [this.user = v[0], console.log(" recipe idUser :", this.user.id), sessionStorage.setItem("idUser", this.user.id)],
+      next: (v) => [this.user.id = v, console.log(" recipe idUser :", this.user.id), sessionStorage.setItem("idUser", this.user.id), console.log("apres le this recipe", this.user[0]), console.log("clg dans le receip", this.user.id)],
       error: (e) => console.error(e),
       complete: () => console.info('complete')
     })
@@ -80,7 +85,7 @@ export class HomeComponent {
     return of(this.service.postConfig(this.houseForm.value).subscribe(
       {
         next: (v) => [this.place = v, console.log(this.place.id), sessionStorage.setItem("idPlace", this.place.id), console.log(this.place.id
-        ), console.log("le clg", this.place.id), this.router.navigate([route])],
+        ), console.log("le clg", this.place.id), this.router.navigate([route]), this.receipe(), this.insert()],
         error: (e) => console.error(e),
         complete: () => [console.info('complete')]
       }
@@ -92,7 +97,7 @@ export class HomeComponent {
   //ici je fait la requete qui permet d'inserer lid lifePlace au moment ou l'utilisateur dse loggue
   insert() {
     this.userService.insertUser().subscribe({
-      next: (v) => [this.user.id = v[0], console.log("idUser :", this.user.id)],
+      next: (v) => [console.log("idUser :", this.user[0])],
       error: (e) => console.error(e),
       complete: () => console.info('complete')
     })

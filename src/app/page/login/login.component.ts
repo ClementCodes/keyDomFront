@@ -5,8 +5,7 @@ import { enableDebugTools } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { LoginService } from 'src/app/services/login/login.service';
-import { UserToken } from 'src/app/models/userToken/userToken.model';
-import { Login } from 'src/app/models/login/Login.model';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -33,6 +32,7 @@ export class LoginComponent {
 
   }
 
+  //au log je set username et password*
 
   onSubmitLogin(route: string) {
 

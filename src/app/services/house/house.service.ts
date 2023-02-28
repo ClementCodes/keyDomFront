@@ -39,7 +39,7 @@ export class HouseService {
   body!: Place
 
 
-
+  //je recupere les utilisateurs par usernmame et password grace au seesisonstorage
   getUser(): Observable<any> {
     return this.http.get<User[]>(this.apiReceipeUrl, this.httpHeader)
   }

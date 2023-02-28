@@ -6,10 +6,10 @@ import { RouterModule, Routes } from '@angular/router';
 
 
 const routes: Routes = [{
-  path: 'home', loadChildren: () => import("./page/home/module/home-form.module").then(m => m.HomeFormModule)
+  path: 'homerecording', loadChildren: () => import("./page/home/module/registrationHome-form.module").then(m => m.HomeFormModule)
 },
 {
-  path: 'registration', loadChildren: () => import("./page/registration/module/registration.module").then(m => m.RegistrationModule)
+  path: 'userrecording', loadChildren: () => import("./page/registration/module/registration.module").then(m => m.RegistrationModule)
 },
 {
   path: 'login', loadChildren: () => import("./page/login/module/login.module").then(m => m.LoginModule)
