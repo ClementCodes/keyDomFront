@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { of } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { UserService } from 'src/app/services/user/user.service';
 import * as bcrypt from 'bcryptjs';
 import { enableDebugTools } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
+import { User } from 'src/app/models/user/user.model';
 
 
 @Component({
@@ -13,6 +14,11 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./registration.component.scss']
 })
 export class RegistrationComponent {
+
+
+  user: Observable<User[]> | any
+
+
 
 
   receipeId!: number;
@@ -59,7 +65,7 @@ export class RegistrationComponent {
     return of(this.userService.postConfig(this.myForm.value).subscribe(
 
       {
-        next: (v) => console.log(v),
+        next: (v) => [this.user = v, console.log(this.user.id), sessionStorage.setItem("idUserRec", this.user.id)],
         error: (e) => console.error(e),
         complete: () => console.info('complete')
       }

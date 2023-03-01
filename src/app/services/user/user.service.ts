@@ -15,7 +15,7 @@ export class UserService {
   apiPostUrl: string = 'http://localhost:8000/api/user/registration';
 
 
-  idUser = sessionStorage.getItem("idUser")
+  idUser = sessionStorage.getItem("idUserRec")
   idPlace = sessionStorage.getItem("idPlace")
 
   apiLifeInUserUrl: string = `http://localhost:8000/api/user/edit/${this.idUser}/${this.idPlace}`;

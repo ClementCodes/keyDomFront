@@ -44,37 +44,43 @@ export class HomeComponent {
 
   ngOnInit(): void {
 
+
+
+    let token = sessionStorage.getItem("token");
+    let iduserRec = sessionStorage.getItem("idUserRec");
+
+    console.log("iduserRec  : ", iduserRec)
+
     console.log("username", sessionStorage.getItem("username"))
     console.log("password", sessionStorage.getItem("password"))
 
 
 
-    let token = sessionStorage.getItem("token");
+
 
     if (token?.valueOf == undefined) {
       this.router.navigate(["login"])
     } else {
       console.log("il ya  un token ")
     }
-    this.receipe();
+    // this.receipe();
 
 
   }
 
   //ici a l'initialisation je recupere le l 'id de l'utilisateur' qui vient de se loguuer
-  receipe() {
+  // receipe() {
 
-    this.houseService.getUser().subscribe({
-      next: (v) => [this.user.id = v, console.log(" recipe idUser :", this.user.id), sessionStorage.setItem("idUser", this.user.id), console.log("apres le this recipe", this.user[0]), console.log("clg dans le receip", this.user.id)],
-      error: (e) => console.error(e),
-      complete: () => console.info('complete')
-    })
-
-    console.log("sessions storage  IDUser " + sessionStorage.getItem("idUser")
-    )
+  //   this.houseService.getUser().subscribe({
+  //     next: (v) => [this.user = v, console.log(this.user.id)],
+  //     error: (e) => console.error(e),
+  //     complete: () => console.info('complete')
+  //   })
 
 
-  }
+
+
+  // }
 
 
   //au moment ou je soumet le formulaire je definit le session storage de l'idPlace
@@ -84,8 +90,7 @@ export class HomeComponent {
 
     return of(this.service.postConfig(this.houseForm.value).subscribe(
       {
-        next: (v) => [this.place = v, console.log(this.place.id), sessionStorage.setItem("idPlace", this.place.id), console.log(this.place.id
-        ), console.log("le clg", this.place.id), this.router.navigate([route]), this.receipe(), this.insert()],
+        next: (v) => [this.place = v, console.log(this.place.id), sessionStorage.setItem("idPlace", this.place.id), console.log(sessionStorage.getItem("idPlace")), this.insert(), this.router.navigate([route])],
         error: (e) => console.error(e),
         complete: () => [console.info('complete')]
       }
@@ -97,7 +102,7 @@ export class HomeComponent {
   //ici je fait la requete qui permet d'inserer lid lifePlace au moment ou l'utilisateur dse loggue
   insert() {
     this.userService.insertUser().subscribe({
-      next: (v) => [console.log("idUser :", this.user[0])],
+      next: (v) => console.log(v),
       error: (e) => console.error(e),
       complete: () => console.info('complete')
     })

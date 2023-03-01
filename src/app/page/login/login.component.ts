@@ -44,7 +44,7 @@ export class LoginComponent {
     return of(this.loginService.postLogin(this.myForm.value).subscribe(
 
       {
-        next: ((v) => [this.router.navigate([route]), this.token = v, console.log(v), sessionStorage.setItem("token", this.token)]),
+        next: ((v) => [this.token = v, console.log(v), sessionStorage.setItem("token", this.token), this.router.navigate([route])]),
         error: (e) => console.error(e),
         complete: () => console.info('complete')
       }
