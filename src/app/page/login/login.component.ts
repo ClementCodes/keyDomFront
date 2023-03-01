@@ -40,7 +40,7 @@ export class LoginComponent {
 
     sessionStorage.setItem("username", this.myForm.value.username)
     sessionStorage.setItem("password", this.myForm.value.password)
-
+    console.log(this.myForm.value)
     return of(this.loginService.postLogin(this.myForm.value).subscribe(
 
       {

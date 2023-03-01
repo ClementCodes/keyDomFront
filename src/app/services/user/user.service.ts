@@ -18,8 +18,9 @@ export class UserService {
   idUser = sessionStorage.getItem("idUserRec")
   idPlace = sessionStorage.getItem("idPlace")
 
-  apiLifeInUserUrl: string = `http://localhost:8000/api/user/edit/${this.idUser}/${this.idPlace}`;
+  apiLifeInUserUrl: string = `https://localhost:8000/api/user/edit/${this.idUser}/${this.idPlace}`;
 
+  // apitest = " https://localhost:8000/api/user/edit/141/346";
 
   constructor(private http: HttpClient) { }
 

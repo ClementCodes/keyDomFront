@@ -48,8 +48,10 @@ export class HomeComponent {
 
     let token = sessionStorage.getItem("token");
     let iduserRec = sessionStorage.getItem("idUserRec");
+    let idplace = sessionStorage.getItem("idPlace");
 
     console.log("iduserRec  : ", iduserRec)
+    console.log("idplace  : ", idplace)
 
     console.log("username", sessionStorage.getItem("username"))
     console.log("password", sessionStorage.getItem("password"))
@@ -90,7 +92,7 @@ export class HomeComponent {
 
     return of(this.service.postConfig(this.houseForm.value).subscribe(
       {
-        next: (v) => [this.place = v, console.log(this.place.id), sessionStorage.setItem("idPlace", this.place.id), console.log(sessionStorage.getItem("idPlace")), this.insert(), this.router.navigate([route])],
+        next: (v) => [this.place = v, console.log(this.place.id), sessionStorage.setItem("idPlace", this.place.id), console.log("seeesions storage  idPlace : ", sessionStorage.getItem("idPlace")), this.insert(), this.router.navigate([route])],
         error: (e) => console.error(e),
         complete: () => [console.info('complete')]
       }

@@ -6,6 +6,7 @@ import * as bcrypt from 'bcryptjs';
 import { enableDebugTools } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/models/user/user.model';
+import { LoginService } from 'src/app/services/login/login.service';
 
 
 @Component({
@@ -15,16 +16,21 @@ import { User } from 'src/app/models/user/user.model';
 })
 export class RegistrationComponent {
 
+  username !: string
+  userpassword !: string
+
+
+
 
   user: Observable<User[]> | any
 
-
+  token!: string
 
 
   receipeId!: number;
   myForm: FormGroup;
   validationCode: string | undefined;
-  constructor(private userService: UserService, private fb: FormBuilder, private router: Router) {
+  constructor(private userService: UserService, private fb: FormBuilder, private router: Router, private loginService: LoginService,) {
 
     this.myForm = this.fb.group({
       name: ['', [Validators.required, Validators.min(1)]],
@@ -35,6 +41,10 @@ export class RegistrationComponent {
       email: ['', [Validators.required, Validators.min(1)]],
       street: ['', [Validators.required, Validators.min(1)]],
     });
+
+
+
+
 
   }
 
@@ -53,9 +63,9 @@ export class RegistrationComponent {
 
 
 
-    // let salt = bcrypt.genSaltSync(10);
-    // let pass = bcrypt.hashSync(this.myForm.value.password, salt);
-    // this.receipeId =
+    //  ici je créer un token pour l'enregistrement
+    sessionStorage.setItem("username", this.myForm.value.name)
+    sessionStorage.setItem("password", this.myForm.value.password)
 
 
 
@@ -65,7 +75,7 @@ export class RegistrationComponent {
     return of(this.userService.postConfig(this.myForm.value).subscribe(
 
       {
-        next: (v) => [this.user = v, console.log(this.user.id), sessionStorage.setItem("idUserRec", this.user.id)],
+        next: (v) => [this.user = v, console.log(this.user.id), sessionStorage.setItem("idUserRec", this.user.id), console.log("sessionsiduserrec", sessionStorage.getItem("idUserRec"))],
         error: (e) => console.error(e),
         complete: () => console.info('complete')
       }

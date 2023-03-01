@@ -23,7 +23,7 @@ export class LoginService {
 
 
 
-  postLogin(login: string): Observable<any> {
+  postLogin(login: string | any): Observable<any> {
 
 
     return this.http.post<Login>(this.apiLoginUrl, login
